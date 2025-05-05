@@ -1,0 +1,95 @@
+\begingroup % un grupo para que o de parindent non afecte ao resto da revista
+\setlength\parindent{0pt}
+% Color del resalte trasparentado a la derecha del índice
+\begin{tikzpicture}[remember picture, overlay]
+    \draw[
+        line width = 0.73\textwidth,
+        color      = Resalte!65!white
+    ] ($(current page.north east) - (0,0)$) -- ($(current page.south east) - (0,0)$);
+\end{tikzpicture}
+% (non xoguedes a poñer liñas en blanco entre as tikzpictures, vai ir mal)
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Columna de la izqueirda, está el índice y el Sobre Momentum. Para colocar ben
+% as as cousas hai que usar moitos 'minipage'.
+\begin{minipage}[t]{0.72\textwidth}%
+    \vspace{-0.3cm}%
+    \begin{minipage}[t]{\hsize}%
+        \makebox[0pt][l]{%
+            % :FACER: se metemos moitas cousas, non colle
+            %
+            % ============ TOC ===============================================
+            % Aquí incluimos el tableofcontens. Personalizado aparte no arquivo
+            % 'revista.cls', botádelle un ollo ao comando \SeccionTOC
+            \begin{adjustbox}{valign=t,minipage={0.9\textwidth},margin={0pt,0pt}}
+                {
+                    \section*{\Huge \textbf{Índice}}
+                    \begingroup%
+                        % Esto es para que no salte el Indice default, y lo
+                        % podamos poner nosotros
+                        \let\contentsname\relax%
+                        \tableofcontents% <--- o 'TOC' CARGASE AQUí
+                    \endgroup%
+                }%
+            \end{adjustbox}%
+        }%
+        % ============== SOBRE MOMENTUM =======================
+        % Texto debajo del índice, sobre momentum
+        \vfill
+        \begin{minipage}[t]{0.9\textwidth}
+            \vfill
+            \vspace{2cm}
+            %{\Huge \color{Resalte!75!black} \textbf{Sobre Momentum}:} \\[1cm]
+            %\imprimeSobreMomentum
+        \end{minipage}
+    \end{minipage}
+\end{minipage}
+\hfill
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LADO DEREITO COS PARTICIPANTES, VARIOS LINKS, DATA, etc. Resaltado cunha cor
+%
+\begin{minipage}[t]{0.28\textwidth}
+    \vspace{-0.3cm}
+    \hspace{-0.7cm}
+    % Data e Número da revista
+    \begin{center}
+        \textcolor{TextoEnResalte}{\Large
+            \textbf{\today }\\[5mm]
+            \textbf{\imprimeNumero} \\[1.5cm]
+        }
+    \end{center}
+    % Aquí mostramos as persoas que participaron no proxecto.
+    \imprimeParticipantes \\[1.5cm]
+    % Links varios
+    \begin{tikzpicture}[scale=1.5]
+        \begingroup
+        \hypersetup{urlcolor = TextoEnResalte}
+        \node at (0,0) { \FonteSimbolos\fontsize{20pt}{0pt}\selectfont \textcolor{TextoEnResalte}  };
+        \node[
+            anchor = west,
+            align  = left
+        ] at (0.3,0)
+        {
+            \footnotesize \href{mailto:\imprimeCorreo}{\textbf{\imprimeCorreo}}
+        };
+        % \node at (0,-1) {\FonteSimbolos\fontsize{20pt}{0pt}\selectfont \textcolor{TextoEnResalte}  };
+        % \node[
+        %     anchor = west,
+        %     align  = left
+        % ] at (0.5,-1)
+        % {
+        %     \href{https://github.com/\imprimeLinkRepositorio}{\texttt{\imprimeLinkRepositorio}}
+        % };
+        \endgroup
+    \end{tikzpicture} \\[1.7cm]
+    %
+    % Logo da USC
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{logos/usc-negativo-escuro.pdf}
+    \end{center}
+\end{minipage}
+\endgroup % <-- este cerra o grupo que contén o de \setlenght\parindent{0pt}
+\newpage
+\pagenumbering{arabic}
