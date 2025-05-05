@@ -3,7 +3,7 @@
 
 % Creamos unha xeometria nova
 \newgeometry{
-    top    = 5mm,  % marxe superior
+    top    = 2mm,  % marxe superior
     left   = 5mm,  % marxe esquerdo
     right  = 5mm,  % marxe dereito
     bottom = 5mm,  % marxe inferior
@@ -15,19 +15,19 @@
 \setlength\parindent{0pt}
 
 % TITULO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace*{1em}
+\vspace*{3mm}
 {%
     \centering%
     \fontsize{70pt}{0pt}\selectfont%
     \FormateaTitulo{Resalte}\par%
 }%
-\vspace*{1em}
+\vspace*{6mm}
 {%
+    \centering%
     \fontsize{18pt}{0pt}\selectfont%
-    \hspace*{1em} A revista estudantil da Facultade de Física da USC\par%
+    \textsf{A revista estudantil da Facultade de Física da USC}\par%
 }%
-\vspace*{1em}
-% \vspace*{4em}
+\vspace*{7mm}
 
 % NUMERO DA REVISTA E DATA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
@@ -49,9 +49,16 @@
 % IMAXE DE CADA REVISTA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % A imaxe da portada debe ser CADRADA EXACTAMENTE
 {
+\vspace*{-4pt}
 \nointerlineskip
 \begin{picture}(\textwidth,\textwidth)%
-    \put(0,0){\hbox{\includegraphics[width=\textwidth]{exemplo_portada.jpeg}}}
+    \put(0,0){%
+        \setlength{\fboxsep}{0pt}%
+        \setlength{\fboxrule}{2pt}%
+        \fbox{%
+            \includegraphics[width=\textwidth-4pt]{\imprimeImaxePortada}%
+        }%
+    }%
 \end{picture}
 }
 
@@ -75,11 +82,11 @@
     \node[
         anchor = south west,
         xshift = 0.55cm,
-        yshift = 0.7cm
+        yshift = 0.5cm
     ] at (current page.south west)
     {\includegraphics[width=12cm]{logos/vicerreitoria-branco-negro.pdf}};
 \end{tikzpicture}
-\endgroup % <-- este cerra o grupo que contén o de \setlenght\parindent{0pt}
+\endgroup% <-- este cerra o grupo que contén o de \setlenght\parindent{0pt}
 
 % volvemos a cargar a xeometria que tiñamos no preambulo
 \restoregeometry

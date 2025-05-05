@@ -24,6 +24,12 @@
     Extension = .otf,
 ]{lmmono10-regular}
 
+% Tipografía Sans Serif
+\setsansfont[
+    Path      = ./fontes/LatinModern/,
+    Extension = .otf,
+]{lmsans10-regular}
+
 % Tipografía xeral
 \setmainfont[
     Path           = ./fontes/LatinModern/,
@@ -130,6 +136,7 @@
 % clase 'twocols' porque esa da moitísimos problemas no caso de que queiramos
 % ter partes que non teñan 2 columnas. Aparte de que se pode configurar menos
 \RequirePackage{multicol}
+%\RequirePackage{enumitem}
 % E aumentamos a separación entre as columnas
 \setlength{\columnsep}{5mm}
 
@@ -172,7 +179,14 @@
 % este justificada. singlelinecheck=false: evita que LaTeX centre pies de una
 % sola línea (por defecto, lo hace aunque hayas pedido justificación).
 \RequirePackage{caption}
-\captionsetup{font=footnotesize, justification=justified, skip=6pt,singlelinecheck = false, labelfont={bf,small}, textfont={small}}
+\captionsetup{
+    font            = footnotesize,
+    justification   = justified,
+    skip            = 6pt,
+    singlelinecheck = false,
+    labelfont       = {bf,small},
+    textfont        = {small}
+}
 
 % Uns paquetes varios que non organicei
 \RequirePackage{subcaption}
@@ -185,6 +199,7 @@
 \RequirePackage{ragged2e} % Para justificar minipages
 \RequirePackage{float}
 \RequirePackage[small, unboxed]{cwpuzzle}
+\RequirePackage{soul}
 
 % Encabezados e pe de paxina
 % Pa facilitar a creacion cun par de comandos
@@ -326,7 +341,6 @@
     \phantomsection%
     % Mostramos o propio titular, como sempre
     \begin{center}
-        %\vspace*{-1cm}
         \vspace*{-5mm}
         % Esto es para que cuando el texto ocupe más de dos líneas, se amplie
         \begingroup
@@ -334,7 +348,7 @@
             \noindent{\color{Resalte}\Huge \textbf{#2}} \\ % TITULO
         \endgroup
         \vspace{3mm}
-        {\Large #3\par} \\ % AUTOR
+        {\Large #3} \\ % AUTOR
         \vspace{3mm}
         \textit{#5}  % SUBTITULO
         \vspace{-3mm}
@@ -435,12 +449,20 @@
 
 % Texto de DESPEDIDA, na contraportada
 \def\Despedida#1{\def\@Despedida{#1}}
-\newcommand{\imprimeDespedida}{\@Despedida}
+\newcommand{\imprimeDespedida}{%
+\begin{center}%
+Un Momentum!\par%
+\end{center}%
+\@Despedida}%
 \Despedida{}
 
 % AGRADECEMENTOS, na contraportada
 \def\Agradecementos#1{\def\@Agradecementos{#1}}
-\newcommand{\imprimeAgradecementos}{\@Agradecementos}
+\newcommand{\imprimeAgradecementos}{%
+\begin{center}%
+Agradecementos:\par%
+\end{center}%
+\@Agradecementos}
 \Agradecementos{}
 
 % Link para o DRIVE
