@@ -451,7 +451,8 @@
 \def\Despedida#1{\def\@Despedida{#1}}
 \newcommand{\imprimeDespedida}{%
 \begin{center}%
-Un Momentum!\par%
+\Huge Un Momentum!\par%
+\\
 \end{center}%
 \@Despedida}%
 \Despedida{}
