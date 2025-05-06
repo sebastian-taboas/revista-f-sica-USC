@@ -452,8 +452,8 @@
 \newcommand{\imprimeDespedida}{%
 \begin{center}%
 \Huge Un Momentum!\par%
-\\
 \end{center}%
+\vspace{1.1\baselineskip}
 \@Despedida}%
 \Despedida{}
 
@@ -461,7 +461,7 @@
 \def\Agradecementos#1{\def\@Agradecementos{#1}}
 \newcommand{\imprimeAgradecementos}{%
 \begin{center}%
-Agradecementos:\par%
+\Large Agradecementos:\par%
 \end{center}%
 \@Agradecementos}
 \Agradecementos{}
